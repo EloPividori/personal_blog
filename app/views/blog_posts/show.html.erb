@@ -1,7 +1,13 @@
-<div><%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in? %></div>
-<div><%= button_to "Delete", @blog_post, method: :delete, data: { turbo_confirm: "Are you sure?" } if user_signed_in? %></div>
-
-<div>
-  <h1><%= @blog_post.title %></h1>
-  <p><%= @blog_post.body %></p>
+<div class="bg-white px-6 py-32 lg:px-8">
+  <div class="mx-auto max-w-3xl text-base leading-7 text-gray-700">
+    <p class="text-base font-semibold leading-7 text-indigo-600">Introducing</p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"><%= @blog_post.title %></h1>
+    <div class="mt-10 max-w-2xl">
+      <p><%= @blog_post.body %></p>
+    </div>
+    <div class="flex mt-16 max-w-2xl">
+      <p class=""><%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in? %></p>
+      <p class="ml-4"><%= button_to "Delete", @blog_post, method: :delete, data: { turbo_confirm: "Are you sure?" } if user_signed_in? %></p>
+    </div>
+  </div>
 </div>

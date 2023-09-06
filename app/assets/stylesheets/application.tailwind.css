@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 /*
 
 @layer components {
@@ -11,3 +13,4 @@
 }
 
 */
+@import "components/buttons";
