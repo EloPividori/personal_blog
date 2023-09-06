@@ -1,3 +1,6 @@
+<div><%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in? %></div>
+<div><%= button_to "Delete", @blog_post, method: :delete, data: { turbo_confirm: "Are you sure?" } if user_signed_in? %></div>
+
 <div>
   <h1><%= @blog_post.title %></h1>
   <p><%= @blog_post.body %></p>
