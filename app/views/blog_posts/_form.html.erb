@@ -17,6 +17,11 @@
     <%= form.text_area :body %>
   </div>
 
+  <div class="mt-4">
+    <%= form.label :published_at %>
+    <%= form.datetime_select :published_at, include_blank: true %>
+  </div>
+
   <div class="mb-4 mt-3">
     <%= form.submit %>
   </div>
