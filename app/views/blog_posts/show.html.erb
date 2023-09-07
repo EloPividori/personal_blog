@@ -3,7 +3,7 @@
     <p class="text-base font-semibold leading-7 text-indigo-600">Introducing</p>
     <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"><%= @blog_post.title %></h1>
     <div class="mt-10 max-w-2xl">
-      <p><%= @blog_post.body %></p>
+      <p><%= @blog_post.content %></p>
     </div>
     <div class="flex mt-16 max-w-2xl">
       <p class=""><%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in? %></p>
