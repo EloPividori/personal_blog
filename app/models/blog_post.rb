@@ -20,4 +20,6 @@ class BlogPost < ApplicationRecord
   def scheduled?
     published_at? && published_at > Time.current
   end
+
+  after_create_commit -> { broadcast_prepend_to 'blog_posts', partial: "blog_posts/blog_post", locals: { blog_post: self } }
 end

@@ -1,5 +1,23 @@
 # frozen_string_literal: true
 
+class TurboFailureApp < Devise::FailureApp
+  include Turbo::Native::Navigation
+
+  def respond
+    if request_format == :turbo_stream
+      redirect
+    elsif turbo_native_app?
+      http_auth
+    else
+      super
+    end
+  end
+
+  def skip_format?
+    %w[html turbo_stream */*].include? request_format.to_s
+  end
+end
+
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
 # are not: uncommented lines are intended to protect your configuration from

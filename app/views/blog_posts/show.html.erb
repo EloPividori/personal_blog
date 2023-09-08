@@ -8,8 +8,8 @@
       <p><%= @blog_post.content %></p>
     </div>
     <div class="flex mt-16 max-w-2xl">
-      <p class=""><%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in? %></p>
-      <p class="ml-4"><%= button_to "Delete", @blog_post, method: :delete, data: { turbo_confirm: "Are you sure?" } if user_signed_in? %></p>
+      <p class=""><%= link_to "Edit", edit_blog_post_path(@blog_post) %></p>
+      <p class="ml-4"><%= button_to "Delete", @blog_post, method: :delete, data: { turbo_confirm: "Are you sure?" } %></p>
     </div>
   </div>
 </div>
