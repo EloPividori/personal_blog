@@ -1,0 +1,17 @@
+<%= turbo_frame_tag blog_post do %>
+  <div class="blog_post flex justify-between">
+    <%= link_to blog_post.title,
+                blog_post_path(blog_post),
+                data: { turbo_frame: "_top" } %>
+    <div class="blog__actions flex">
+      <% if user_signed_in? %>
+        <%= button_to "Delete",
+                      blog_post,
+                      method: :delete,
+                      class: "mr-3" %>
+        <%= link_to "Edit",
+                    edit_blog_post_path(blog_post) %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

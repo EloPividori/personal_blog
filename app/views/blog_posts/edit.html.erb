@@ -1,6 +1,11 @@
-<div>
-  <h1>Edit your blog post</h1>
-  <div><%= render partial: "form", locals: { blog_post: @blog_post } %></div>
+<main class=container>
+  <%= link_to sanitize("&larr; Back to blog posts"), blog_posts_path, class: "btn btn-primary" %>
 
-  <div><%= button_to "Delete", @blog_post, method: :delete, data: { turbo_confirm: "Are you sure?" } %></div>
-</div>
+  <div class="header">
+    <h1>Edit your blog post</h1>
+  </div>
+
+  <%= turbo_frame_tag @blog_post do %>
+    <%= render "form", blog_post: @blog_post %>
+  <% end %>
+</main>

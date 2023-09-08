@@ -3,7 +3,8 @@ class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
+    @blog_posts = user_signed_in? ? BlogPost.ordered : BlogPost.published.ordered
+    @blog_post = BlogPost.new
   end
 
   def show
@@ -17,7 +18,10 @@ class BlogPostsController < ApplicationController
     @blog_post = BlogPost.new(blog_post_params)
 
     if @blog_post.save
-      redirect_to @blog_post
+      respond_to do |format|
+        format.html { redirect_to blog_posts_path, notice: 'Blog post was successfully created.' }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +32,7 @@ class BlogPostsController < ApplicationController
 
   def update
     if @blog_post.update(blog_post_params)
-      redirect_to @blog_post
+      redirect_to blog_posts_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +40,11 @@ class BlogPostsController < ApplicationController
 
   def destroy
     @blog_post.destroy
-    redirect_to root_path
+
+    respond_to do |format|
+      format.html { redirect_to blog_posts_path, notice: 'Blog post was successfully destroyed.' }
+      format.turbo_stream
+    end
   end
 
   private

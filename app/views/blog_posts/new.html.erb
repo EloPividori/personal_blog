@@ -1,2 +1,11 @@
-<h1>New Blog Post</h1>
-<%= render partial: "form", locals: { blog_post: @blog_post } %>
+<main class="container">
+  <%= link_to sanitize("&larr; Back to blog posts"), blog_posts_path, class: "btn btn-primary" %>
+
+  <div class="header">
+    <h1>New Blog Post</h1>
+  </div>
+
+  <%= turbo_frame_tag @blog_post do %>
+    <%= render "form", blog_post: @blog_post %>
+  <% end %>
+</main>
